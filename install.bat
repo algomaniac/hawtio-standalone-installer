@@ -51,6 +51,7 @@ mkdir %install_location%\data
 echo f | xcopy /f /Y install.properties %install_location%\data\installed.properties
 echo f | xcopy /f /Y lib\hawtio-app-1.4.66.jar %install_location%\lib\hawtio-app-1.4.66.jar
 echo f | xcopy /f /Y lib\nssm.exe %install_location%\lib\nssm.exe
+echo f | xcopy /f /Y lib\sleep.exe %install_location%\lib\sleep.exe
 echo f | xcopy /f /Y lib\elevator.bat %install_location%\bin\elevator.bat
 
 ::Create start/stop/ bat files
@@ -127,4 +128,5 @@ echo See %install_location%\bin for service helpers.
 Pause
 
 cd /D %install_location%\bin
+..\lib\sleep.exe 5
 CALL open.bat
