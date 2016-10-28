@@ -8,6 +8,7 @@
 :: dependencies		:NSSM - https://nssm.cc/
 ::					 curl - https://curl.haxx.se/
 ::					 hawtio - http://hawt.io/
+::					 sleep.exe - http://www.sleepcmd.com/
 ::==============================================================================
 @echo off
 
@@ -77,6 +78,12 @@ echo :elevated >> stop.bat
 echo net stop %service_name% >> stop.bat
 echo exit >> stop.bat
 
+::Creating open.bat
+echo ^@echo off > open.bat
+echo. >> open.bat
+echo start http://localhost:%port%/hawtio >> open.bat
+echo. >> stop.bat
+
 ::Creating Uninstaller
 cd /D %install_location%
 echo ^@echo off > uninstall.bat
@@ -117,3 +124,7 @@ nssm.exe start %service_name%
 
 echo Installation Completed Successfully. 
 echo See %install_location%\bin for service helpers.
+Pause
+
+cd /D %install_location%\bin
+CALL open.bat
